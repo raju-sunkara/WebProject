@@ -1,8 +1,12 @@
 pipeline {
-    agent any
+    agent none
 
     stages {
-        stage('Build') {
+        
+        stage('Build backend') {
+            agent{
+                docker {image 'python:latest'}
+            }
             steps {
                 // Checkout source code from version control system
                 git 'https://github.com/raju-sunkara/WebProject.git'
@@ -13,6 +17,13 @@ pipeline {
                     sh 'pip install -r requirements.txt'
                     sh 'python setup.py install'
                 }
+            }
+        }
+        stage('Build frontend') {
+            agent{
+                docker {image 'node:latest'}
+            }
+            steps {
 
                 // Build and package the frontend
                 dir('frontend') {
@@ -22,25 +33,25 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                // Run backend tests
-                dir('backend') {
-                    sh 'python manage.py test'
-                }
+        // stage('Test') {
+        //     steps {
+        //         // Run backend tests
+        //         dir('backend') {
+        //             sh 'python manage.py test'
+        //         }
 
-                // Run frontend tests
-                dir('frontend') {
-                    sh 'npm run test'
-                }
-            }
-        }
+        //         // Run frontend tests
+        //         dir('frontend') {
+        //             sh 'npm run test'
+        //         }
+        //     }
+        // }
 
-        stage('Deploy') {
-            steps {
-                // Deploy the application using Docker Compose
-                sh 'docker-compose up -d'
-            }
-        }
+        // stage('Deploy') {
+        //     steps {
+        //         // Deploy the application using Docker Compose
+        //         sh 'docker-compose up -d'
+        //     }
+        // }
     }
 }
