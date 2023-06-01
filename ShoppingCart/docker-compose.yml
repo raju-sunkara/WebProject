@@ -3,18 +3,18 @@
 version: '3'
 
 services:
-  jenkins:
-    build: ./cd_jenkins
-    image: cd_jenkins:latest
-    ports:
-      - "8080:8080"
-      - "50000:50000"
-#    links:
-#      - nexus
-#      - test_fixture
-    volumes:
-      - /./../DevOps/LLearning/mydockerfiles/DevOpsFounda/Ex_Files_DevOps_Foundations_CD_CI/CourseEnv/jenkins_home:/var/jenkins_home
-    stop_grace_period: 120s
+#   jenkins:
+#     build: ./cd_jenkins
+#     image: cd_jenkins:latest
+#     ports:
+#       - "8080:8080"
+#       - "50000:50000"
+# #    links:
+# #      - nexus
+# #      - test_fixture
+#     volumes:
+#       - /./../DevOps/LLearning/mydockerfiles/DevOpsFounda/Ex_Files_DevOps_Foundations_CD_CI/CourseEnv/jenkins_home:/var/jenkins_home
+#     stop_grace_period: 120s
   backend:
     build: ./backend
     ports:
@@ -30,9 +30,9 @@ services:
       - backend
 
   database:
-    image: mysql:latest
-    ports:
-      - 3306:3306
-    environment:
-      - MYSQL_ROOT_PASSWORD=secret
-      - MYSQL_DATABASE=shopping_cart
+     image: mysql:latest
+     ports:
+       - 3306:3306
+     environment:
+       - MYSQL_ROOT_PASSWORD=secret
+       - MYSQL_DATABASE=shopping_cart
