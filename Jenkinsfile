@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Checkout source code from version control system
-                git 'https://github.com/your-repo/shopping-cart.git'
+                git 'https://github.com/raju-sunkara/WebProject.git'
 
                 // Build and package the backend
                 dir('backend') {
