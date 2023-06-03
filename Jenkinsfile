@@ -9,7 +9,7 @@ pipeline {
             }
             steps {
                 // Checkout source code from version control system
-                git 'https://github.com/raju-sunkara/WebProject.git'
+            //    git 'https://github.com/raju-sunkara/WebProject.git'
                 sh 'cd ShoppingCart'
 
                 // Build and package the backend
