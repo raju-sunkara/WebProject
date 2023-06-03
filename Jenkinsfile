@@ -15,7 +15,7 @@ pipeline {
                 // Build and package the backend
                 dir('backend') {
                     sh 'pip install -r requirements.txt'
-                    sh 'python setup.py install'
+                    sh 'python backend.py'
                 }
             }
         }
