@@ -1,0 +1,1 @@
+document.querySelector(".showMessage").addEventListener("click",() => {alert("Hey you clicked on button..");});
